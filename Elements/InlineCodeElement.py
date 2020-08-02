@@ -3,7 +3,7 @@ from Elements import IElement
 from LineIterator import LineIterator
 
 FIND_REGEX = r"`(.*?)`"
-NEW_CODE_FORMAT = "{{code}}{}{{code}}"
+NEW_CODE_FORMAT = "{{{{{}}}}}"
 
 
 class InlineCodeElement(IElement):
