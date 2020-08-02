@@ -17,7 +17,8 @@ class LineIterator:
             raise IteratorException("Attempted to advance iterator that is done.")
         self.lines[self.__index] = self.value
         self.__index += 1
-        self.value = self.lines[self.__index]
+        if not self.is_done():
+            self.value = self.lines[self.__index]
 
     def reverse(self):
         """
@@ -40,4 +41,4 @@ class LineIterator:
         """
         Return true if iterator is at the last line.
         """
-        return self.__index == len(self.lines) - 1
+        return self.__index == len(self.lines)
