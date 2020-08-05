@@ -1,13 +1,17 @@
 import re
 from Elements import IElement
 from LineIterator import LineIterator
+from Utils import ImageTagGenerator
 
-ALL_LINK_RE = r"(?:!?\[([^\]]*)\]\(([^)]*)\))"
-TIP_LINK_RE = r'(?:!?\[([^\]]*)\]\(([^\)]*)\s+(?:"([^"]*)")?\))'
+ALL_LINK_RE = r"(?:[!&]?\[([^\]]*)\]\(([^)]*)\))"
+TIP_LINK_RE = r'(?:[!&]?\[([^\]]*)\]\(([^\)]*)\s+(?:"([^"]*)")?\))'
 
 NEW_LINK_FORMAT = "[{}|{}|{}]"
 IMAGE_FORMAT = "!{}!"
 IMAGE_CHAR = "!"
+OFFLINE_IMAGE_CHAR = "&"
+
+HTML_MACRO_FORMAT = "{{html}}{}{{html}}"
 
 
 class LinkElement(IElement):
@@ -37,5 +41,7 @@ class LinkElement(IElement):
             alias, link = re.search(ALL_LINK_RE, text).groups()
         if text[0] == IMAGE_CHAR:
             link = IMAGE_FORMAT.format(link)
+        elif text[0] == OFFLINE_IMAGE_CHAR:
+            img_tag = ImageTagGenerator().generate(link, tip, alias)
+            return HTML_MACRO_FORMAT.format(img_tag)
         return NEW_LINK_FORMAT.format(alias, link, tip)
-
