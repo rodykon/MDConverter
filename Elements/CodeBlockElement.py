@@ -9,10 +9,10 @@ CODE_CLOSE = "{code}"
 class CodeBlockElement(IElement):
 
     def is_relevant(self, line: str) -> bool:
-        return line[:len(OLD_CODE)] == OLD_CODE
+        return line.lstrip()[:len(OLD_CODE)] == OLD_CODE
 
     def replace(self, line_iterator: LineIterator) -> None:
-        language = line_iterator.value[3:]
+        language = line_iterator.value.lstrip()[len(OLD_CODE):]
         line_iterator.value = NEW_CODE_FORMAT.format(language)
 
         while not self.is_relevant(line_iterator.value):

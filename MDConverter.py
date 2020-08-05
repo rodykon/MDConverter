@@ -1,6 +1,6 @@
 from argparse import ArgumentParser, FileType
 from Elements import NormalHeaderElement, UnderlineHeaderElement, EmphasisElement, BlockQuoteElement, ListElement, \
-    CodeBlockElement, LinkElement, InlineCodeElement, ImageElement
+    CodeBlockElement, LinkElement, InlineCodeElement, LinkElement
 from Converter import Converter
 
 
@@ -13,7 +13,7 @@ def main():
                            CodeBlockElement(),
                            LinkElement(),
                            InlineCodeElement(),
-                           ImageElement()])
+                           LinkElement()])
 
     parser = ArgumentParser(description="Convert a markdown file to Atlassian markup language.")
     parser.add_argument("infile", type=FileType("r"))
