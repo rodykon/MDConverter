@@ -29,7 +29,7 @@ h2. Header 2
 ```
 
 ## Current Capabilities
-The current elements that the library can identify and convert are:
+The current markdown elements that the library can identify and convert are:
 
 * Headers
   * Normal Headers
@@ -80,6 +80,13 @@ The current elements that the library can identify and convert are:
 * Images
   ```
   ![This is an image](https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg)
+  ```
+
+The library also contains some non-vanilla markdown elements that could be useful when working with Confluence:
+
+* Offline image - this tag is converted to an html macro with an <img> tag that contains the base64 encoded file.
+  ```
+  &[This is](./image.png "an offline image")
   ```
     
 ## Expanding the Library
