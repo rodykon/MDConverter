@@ -7,4 +7,4 @@ from Elements.ListElement import ListElement
 from Elements.CodeBlockElement import CodeBlockElement
 from Elements.LinkElement import LinkElement
 from Elements.InlineCodeElement import InlineCodeElement
-from Elements.ImageElement import ImageElement
+from Elements.LinkElement import LinkElement
